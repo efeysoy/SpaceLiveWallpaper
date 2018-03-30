@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.service.wallpaper.WallpaperService
 import android.widget.Button
 import android.widget.SeekBar
+import kotlinx.android.synthetic.main.activity_settings.*
 
 
 class SettingsActivity : AppCompatActivity() {
@@ -27,9 +28,9 @@ class SettingsActivity : AppCompatActivity() {
             startActivityForResult(intent, 0)
         }
 
-        val seekRate = findViewById<SeekBar>(R.id.seekRate)
-        val seekAmount = findViewById<SeekBar>(R.id.seekStarAmount)
-        val seekSize = findViewById<SeekBar>(R.id.seekSize)
+//        val seekRate = findViewById<SeekBar>(R.id.seekRate)
+//        val seekAmount = findViewById<SeekBar>(R.id.seekStarAmount)
+//        val seekSize = findViewById<SeekBar>(R.id.seekSize)
 
         seekRate.progress = prefs.getInt("rate", 1000)
 
@@ -45,9 +46,9 @@ class SettingsActivity : AppCompatActivity() {
             }
         })
 
-        seekAmount.progress = prefs.getInt("amount", 4000)
+        seekStarAmount.progress = prefs.getInt("amount", 4000)
 
-        seekAmount.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        seekStarAmount.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {}
 
