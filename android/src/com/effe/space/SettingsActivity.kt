@@ -4,11 +4,13 @@ import android.app.WallpaperManager
 import android.support.v7.app.AppCompatActivity
 import android.content.ComponentName
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
-import android.service.wallpaper.WallpaperService
 import android.widget.Button
 import android.widget.SeekBar
 import kotlinx.android.synthetic.main.activity_settings.*
+import com.pes.androidmaterialcolorpickerdialog.ColorPicker
 
 
 class SettingsActivity : AppCompatActivity() {
@@ -18,6 +20,7 @@ class SettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
         val prefs = getSharedPreferences("com.effe.space", 0)
         val editor = prefs.edit()
+        val cp = ColorPicker(this)
 
         var btnPreview = findViewById<Button>(R.id.btnPreview)
 
@@ -31,6 +34,32 @@ class SettingsActivity : AppCompatActivity() {
 //        val seekRate = findViewById<SeekBar>(R.id.seekRate)
 //        val seekAmount = findViewById<SeekBar>(R.id.seekStarAmount)
 //        val seekSize = findViewById<SeekBar>(R.id.seekSize)
+
+        checkColor.isChecked = prefs.getBoolean("colored", false)
+
+        checkColor.setOnClickListener {
+            editor.putBoolean("colored", checkColor.isChecked)
+            editor.commit()
+        }
+
+        cp.color = Color.rgb(prefs.getInt("red", 255),
+                prefs.getInt("green", 0),
+                prefs.getInt("blue", 0))
+
+
+        btnColor.setOnClickListener {
+            cp.show()
+            cp.setCallback {
+                btnColor.background.setColorFilter(it, PorterDuff.Mode.MULTIPLY)
+                editor.putInt("red", Color.red(it))
+                editor.putInt("green", Color.green(it))
+                editor.putInt("blue", Color.blue(it))
+                editor.commit()
+                cp.hide()
+            }
+        }
+
+        btnColor.background.setColorFilter(cp.color, PorterDuff.Mode.MULTIPLY)
 
         seekRate.progress = prefs.getInt("rate", 1000)
 
