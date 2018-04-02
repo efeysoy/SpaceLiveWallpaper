@@ -50,7 +50,7 @@ class SettingsActivity : AppCompatActivity() {
         btnColor.setOnClickListener {
             cp.show()
             cp.setCallback {
-                btnColor.background.setColorFilter(it, PorterDuff.Mode.MULTIPLY)
+                btnColor.background.setColorFilter(it, PorterDuff.Mode.DST)
                 editor.putInt("red", Color.red(it))
                 editor.putInt("green", Color.green(it))
                 editor.putInt("blue", Color.blue(it))
@@ -59,7 +59,7 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
-        btnColor.background.setColorFilter(cp.color, PorterDuff.Mode.MULTIPLY)
+        btnColor.background.setColorFilter(cp.color, PorterDuff.Mode.DST)
 
         seekRate.progress = prefs.getInt("rate", 1000)
 
