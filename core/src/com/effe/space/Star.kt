@@ -21,7 +21,7 @@ class Star(point: Vector2, size:Float, batch:SpriteBatch, texture:Texture, width
     companion object {
         val rand = Random()
     }
-    val color:Color = Color()
+    var color:Color = Color()
 
 
     init {

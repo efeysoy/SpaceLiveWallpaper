@@ -17,6 +17,4 @@ class WallpaperService : AndroidLiveWallpaperService() {
         initialize(WallpaperGame(getSharedPreferences("com.effe.space", 0)), config)
 
     }
-
-
 }

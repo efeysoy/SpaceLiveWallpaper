@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.SeekBar
 import kotlinx.android.synthetic.main.activity_settings.*
@@ -39,6 +40,10 @@ class SettingsActivity : AppCompatActivity() {
 
         checkColor.setOnClickListener {
             editor.putBoolean("colored", checkColor.isChecked)
+            if (!checkColor.isChecked)
+                btnColor.visibility = View.INVISIBLE
+            else
+                btnColor.visibility = View.VISIBLE
             editor.commit()
         }
 
@@ -50,7 +55,7 @@ class SettingsActivity : AppCompatActivity() {
         btnColor.setOnClickListener {
             cp.show()
             cp.setCallback {
-                btnColor.background.setColorFilter(it, PorterDuff.Mode.DST)
+                btnColor.background.setColorFilter(it, PorterDuff.Mode.SRC)
                 editor.putInt("red", Color.red(it))
                 editor.putInt("green", Color.green(it))
                 editor.putInt("blue", Color.blue(it))
@@ -59,7 +64,7 @@ class SettingsActivity : AppCompatActivity() {
             }
         }
 
-        btnColor.background.setColorFilter(cp.color, PorterDuff.Mode.DST)
+        btnColor.background.setColorFilter(cp.color, PorterDuff.Mode.SRC)
 
         seekRate.progress = prefs.getInt("rate", 1000)
 
