@@ -3,5 +3,10 @@
 
     <string name="app_name">Space Live Wallpaper</string>
     <string name="settings_name">Space Wallpaper Settings</string>
+    <string name="color">Color</string>
+    <string name="shine_rate">Shine Rate</string>
+    <string name="star_size">Star Size</string>
+    <string name="star_amount">Star Amount</string>
+    <string name="preview">Preview</string>
 
 </resources>

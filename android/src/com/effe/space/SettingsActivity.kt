@@ -47,9 +47,15 @@ class SettingsActivity : AppCompatActivity() {
             editor.commit()
         }
 
+        editor.putBoolean("colored", checkColor.isChecked)
+        if (!checkColor.isChecked)
+            btnColor.visibility = View.INVISIBLE
+        else
+            btnColor.visibility = View.VISIBLE
+
         cp.color = Color.rgb(prefs.getInt("red", 255),
-                prefs.getInt("green", 0),
-                prefs.getInt("blue", 0))
+                             prefs.getInt("green", 0),
+                             prefs.getInt("blue", 0))
 
 
         btnColor.setOnClickListener {
@@ -80,7 +86,7 @@ class SettingsActivity : AppCompatActivity() {
             }
         })
 
-        seekStarAmount.progress = prefs.getInt("amount", 4000)
+        seekStarAmount.progress = prefs.getInt("amount", 2000)
 
         seekStarAmount.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
 

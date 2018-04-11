@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Uzay Canlı Duvar Kağıdı</string>
+    <string name="settings_name">Uzay Canlı Duvar Kağıdı Ayarları</string>
+    <string name="color">Renk</string>
+    <string name="shine_rate">Parlama Sıklığı</string>
+    <string name="star_size">Yıldız Boyutu</string>
+    <string name="star_amount">Yıldız Miktarı</string>
+    <string name="preview">Önizleme</string>
+</resources>

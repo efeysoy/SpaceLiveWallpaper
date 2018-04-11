@@ -115,6 +115,9 @@ class WallpaperGame(sp: SharedPreferences) : Game(), SharedPreferences.OnSharedP
 
         r += ((1 - Math.abs(pitch)) * -dRoll + Math.abs(pitch) * dAzim)
 
+        if (r > 1 || r < -1)
+            r = 0f
+
         Gdx.gl.glClearColor(0f, 0f, 0f, 1f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
@@ -131,8 +134,6 @@ class WallpaperGame(sp: SharedPreferences) : Game(), SharedPreferences.OnSharedP
 //        var k = 1
 //        for(i in mat)
 //            font.draw(batch, k.toString() + " - " + Math.round(i* 10).toString(), 500f, 200f + (k++*100))
-//
-//        font.draw(batch, Math.round(r * 10).toString() + " - r", 100f, 500f)
 
 
         batch.end()
